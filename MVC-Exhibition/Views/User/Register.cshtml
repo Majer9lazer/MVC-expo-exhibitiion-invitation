@@ -1,0 +1,105 @@
+﻿@using MVC_Exhibition.Models
+@model ExpoUser
+@{
+    ViewBag.Title = "Register";
+    int? statusCode = ViewBag.statusCode;
+    string message = ViewBag.message;
+}
+@switch (statusCode)
+{
+    case 0:
+    {
+        <div class="alert alert-success alert-dismissible fade in" id="MyAllert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>@message</span>
+            <br style="clear: both" />
+            <div class="badge badge-danger" style="height: 25px;padding: 5px">
+                <span id="CountDownTimer" style="font-size: 14px"></span>
+            </div>
+        </div>
+        break;
+    }
+    case 1:
+    {
+        <div class="alert alert-danger alert-dismissible fade in" id="MyAllert">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            @message
+            <br />
+            <div class="badge badge-danger" style="padding: 5px; height: 25px;">
+                <span id="CountDownTimer" style="font-size: 14px"></span>
+            </div>
+        </div>
+        break;
+    }
+    case 2:
+    {
+        <div class="alert alert-success alert-dismissible fade in">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <span>@message</span>
+        </div>
+        break;
+    }
+}
+@using (Html.BeginForm("RegisterForm","User"))
+{
+    @Html.ValidationSummary()
+    <div class="portlet box red">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="icon-reorder">
+                </i>
+                Форма регистрации
+            </div>
+            <div class="tools">
+                <a href="" class="collapse"></a>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <form role="form">
+                <div class="form-body">
+                    <div class="form-group">
+                        <label>Введите ваше имя и фамилию</label>
+                        @Html.TextBoxFor(model => Model.UserName, new { @class = "form-control input-medium", @placeholder = "Иванов Иван" })
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        @Html.TextBoxFor(model => Model.UserEmail, new { @class = "form-control input-medium", @placeholder = "exapmle@google.com" })
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон с +7 </label>
+                        @Html.TextBoxFor(model => Model.UserPhoneNumber, new { @class = "form-control input-medium", @placeholder = "+77051475232" })
+                    </div>
+                    <div class="form-group">
+                        <label>Название компании</label>
+                        @Html.TextBoxFor(model => Model.UserCompanyName, new { @class = "form-control input-medium", @placeholder = "ТОО \"Привет мир\""})
+                    </div>
+                    <div class="form-group">
+                        <label>Выберите страну</label>
+                        @Html.DropDownListFor(f => f.UserCountryId, null, new { @class = "form-control input-medium" })
+                    </div>
+                    <div class="form-group">
+                        <label>Выберите город</label>
+                        @Html.DropDownListFor(f=>f.UserCityId, null, new { @class = "form-control input-medium" })
+                    </div>
+                    <div class="form-group">
+                        <label>Адрес СТО</label>
+                        @Html.TextBoxFor(model => Model.StoAddress, new { @class = "form-control input-medium", @placeholder = "Какая-то улица"})
+                    </div>
+                    <div class="form-group">
+                        <label>Вид деятельности</label>
+                        @Html.TextBoxFor(model => Model.KindOfActivity, new { @class = "form-control input-medium", @placeholder = "Какой-то вид деятельности"})
+                    </div>
+                    <div class="form-group">
+                        <label>Должност</label>
+                        @Html.TextBoxFor(model => Model.WorkPosition, new { @class = "form-control input-medium", @placeholder = "Ну , должность"})
+                    </div>
+                </div>
+                <div class="form-actions right">
+                    <button type="submit" class="btn green">Зарегестрироваться</button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+
