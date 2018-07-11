@@ -57,6 +57,7 @@ namespace MVC_Exhibition.Controllers
                 {
                     try
                     {
+
                         Barcode128 code2 = new Barcode128();
                         code2.CodeType = Barcode.CODE128_UCC;
                         code2.ChecksumText = true;
