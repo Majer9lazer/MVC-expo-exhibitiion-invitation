@@ -1,0 +1,109 @@
+﻿@using MVC_Exhibition.Models
+@model IEnumerable<ExpoUser>
+
+@{
+    ViewBag.Title = "UserInfo";
+    int? statusCode = ViewBag.statusCode;
+    string message = ViewBag.message;
+}
+@switch (statusCode)
+{
+    case 0:
+        {
+            <div class="alert alert-success alert-dismissible fade in" id="MyAllert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
+                <span>@message</span>
+                <br style="clear: both" />
+            </div>
+            break;
+        }
+    case 1:
+        {
+            <div class="alert alert-danger alert-dismissible fade in" id="MyAllert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
+                @message
+                <br />
+            </div>
+            break;
+        }
+    case 2:
+        {
+            <div class="alert alert-success alert-dismissible fade in">
+                <span>@message</span>
+            </div>
+            break;
+        }
+}
+<h2>Информация о пользователях</h2>
+@if (Model.Any())
+{
+    using (Html.BeginForm("UploadData", "User", FormMethod.Post))
+    {
+        @Html.ActionLink("Выгрузить в Excel", "UploadData", "User", htmlAttributes: new { @class = "btn btn-success" })
+    }
+}
+
+<br />
+<div class="portlet-body">
+    <div class="container-fluid">
+        <table class="table table-hover table-condensed table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserPhoneNumber)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (ExpoUser item in Model)
+            {
+                <tr class="@if (item.DateOfVisiting == null)
+                   {
+                       @:danger
+                   }
+                   else
+                   {
+                       @:success
+                   }"
+                    title="@if (item.DateOfVisiting == null)
+               {
+                   @:Данный пользователь еще не пришел на выставку
+               }
+               else
+               {
+                   @:Данный пользователь на выставке
+               }">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                        <br />
+                        @if (item.DateOfVisiting == null)
+                        {
+                            <span class="badge badge-danger">Не на выставке</span>
+                        }
+                        else
+                        {
+                            <span class="badge badge-success">На выставке</span>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserPhoneNumber)
+                    </td>
+                    <td class="btn-group">
+                        @Html.ActionLink("Удалить", "Delete", "User", new { userId = item.Id }, htmlAttributes: new { @class = "btn btn-danger margin-right-10" })
+                        @Html.ActionLink("Детали", "Details", "User", new { userId = item.Id }, htmlAttributes: new { @class = "btn btn-primary margin-right-10" })
+                        @Html.ActionLink("Сделать активным", "SetActive", "User", new { userId = item.Id }, htmlAttributes: new { @class = "btn btn-warning" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

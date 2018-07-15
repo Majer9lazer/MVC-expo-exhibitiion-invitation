@@ -8,39 +8,52 @@
 @switch (statusCode)
 {
     case 0:
-    {
-        <div class="alert alert-success alert-dismissible fade in" id="MyAllert">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <span>@message</span>
-            <br style="clear: both" />
-            <div class="badge badge-danger" style="height: 25px;padding: 5px">
-                <span id="CountDownTimer" style="font-size: 14px"></span>
+        {
+            <div class="alert alert-success alert-dismissible fade in" id="MyAllert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
+                <span>@message</span>
+                <br style="clear: both"/>
             </div>
-        </div>
-        break;
-    }
+            break;
+        }
     case 1:
-    {
-        <div class="alert alert-danger alert-dismissible fade in" id="MyAllert">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            @message
-            <br />
-            <div class="badge badge-danger" style="padding: 5px; height: 25px;">
-                <span id="CountDownTimer" style="font-size: 14px"></span>
+        {
+            <div class="alert alert-danger alert-dismissible fade in" id="MyAllert">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
+                @message
+                <br />
+            </div>
+            break;
+        }
+    case 2:
+        {
+            <div class="alert alert-success alert-dismissible fade in">
+                <span>@message</span>
+            </div>
+            break;
+        }
+}
+@*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#m_modal_1">Launch Modal</button>
+<div class="modal fade show" id="m_modal_1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" style="display: block;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
-        break;
-    }
-    case 2:
-    {
-        <div class="alert alert-success alert-dismissible fade in">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <span>@message</span>
-        </div>
-        break;
-    }
-}
-@using (Html.BeginForm("RegisterForm","User"))
+    </div>
+</div>*@
+@using (Html.BeginForm("RegisterForm", "User"))
 {
     @Html.ValidationSummary()
     <div class="portlet box red">
@@ -71,7 +84,7 @@
                     </div>
                     <div class="form-group">
                         <label>Название компании</label>
-                        @Html.TextBoxFor(model => Model.UserCompanyName, new { @class = "form-control input-medium", @placeholder = "ТОО \"Привет мир\""})
+                        @Html.TextBoxFor(model => Model.UserCompanyName, new { @class = "form-control input-medium", @placeholder = "ТОО \"Привет мир\"" })
                     </div>
                     <div class="form-group">
                         <label>Выберите страну</label>
@@ -79,19 +92,19 @@
                     </div>
                     <div class="form-group">
                         <label>Выберите город</label>
-                        @Html.DropDownListFor(f=>f.UserCityId, null, new { @class = "form-control input-medium" })
+                        @Html.DropDownListFor(f => f.UserCityId, null, new { @class = "form-control input-medium" })
                     </div>
                     <div class="form-group">
                         <label>Адрес СТО</label>
-                        @Html.TextBoxFor(model => Model.StoAddress, new { @class = "form-control input-medium", @placeholder = "Какая-то улица"})
+                        @Html.TextBoxFor(model => Model.StoAddress, new { @class = "form-control input-medium", @placeholder = "Какая-то улица" })
                     </div>
                     <div class="form-group">
                         <label>Вид деятельности</label>
-                        @Html.TextBoxFor(model => Model.KindOfActivity, new { @class = "form-control input-medium", @placeholder = "Какой-то вид деятельности"})
+                        @Html.TextBoxFor(model => Model.KindOfActivity, new { @class = "form-control input-medium", @placeholder = "Какой-то вид деятельности" })
                     </div>
                     <div class="form-group">
-                        <label>Должност</label>
-                        @Html.TextBoxFor(model => Model.WorkPosition, new { @class = "form-control input-medium", @placeholder = "Ну , должность"})
+                        <label>Должность</label>
+                        @Html.TextBoxFor(model => Model.WorkPosition, new { @class = "form-control input-medium", @placeholder = "Ну , должность" })
                     </div>
                 </div>
                 <div class="form-actions right">

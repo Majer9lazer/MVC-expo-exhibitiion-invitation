@@ -1,0 +1,120 @@
+﻿@model MVC_Exhibition.Models.ExpoUser
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ExpoUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserPhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCountryId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCountryId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserCityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserCityId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StoAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KindOfActivity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KindOfActivity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkPosition)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkPosition)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfRegistration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfRegistration)
+        </dd>
+
+        <dt>
+            @if (Model.DateOfVisiting == null)
+            {
+                    <span class="text-danger">DateOfVisiting</span>  
+            }
+            else
+            {
+                <span class="text-success">DateOfVisiting</span>  
+            }
+
+        </dt>
+
+        <dd>
+            @if (Model.DateOfVisiting == null)
+            {
+            <span class="text-danger text-uppercase">NULL</span>  
+            }
+            else
+            {
+            <span class="text-success">@Html.DisplayFor(model => model.DateOfVisiting)</span>  
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Обратно к списку", "UserInfo", "User", htmlAttributes: new { @class = "btn btn-primary" })
+</p>

@@ -1,0 +1,42 @@
+﻿@model MVC_Exhibition.Models.ExpoUser
+@{
+    ViewBag.Title = "UserRegistrationInfo";
+}
+<div class="portlet box">
+    <div class="portlet-title">
+        <div class="caption">
+            Информация о регистрации
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <form role="form">
+            <div class="form-body">
+                @if (Model != null)
+                {
+                    <div class="form-group">
+
+                        <img src="@("/Template/barcode-" + Model.Id + ".gif")" />
+                    </div>
+                    <div class="form-group">
+                        <span>Уважаемый(ая) @Model.UserName вы были зарегестрированы для выставки экспо</span>
+
+
+                    </div>
+                    <div class="form-group">  <span>Сохраните код для пропуска , он также была отправлена вам на почту</span></div>
+                    <div class="form-group">  <span>Ваш Id - @Model.Id</span></div>
+                    <div class="form-group"></div>
+                    <div class="form-group">
+                        @Html.ActionLink("Сохранить", "GetFile", "User", new { userGuid = Model.Id}, htmlAttributes: new { @class = "btn btn-primary" })
+                    </div>
+                }
+                else
+                {
+                    <p>Ничего нет</p>
+                }
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
